@@ -46,7 +46,7 @@ export function RegisterForm() {
                     placeholder="Jane Smith"
                     autoComplete="name"
                     required
-                    error={fieldErrors.full_name}
+                    error={fieldErrors?.full_name}
                 />
                 <FormField
                     label="Email"
@@ -55,7 +55,7 @@ export function RegisterForm() {
                     placeholder="you@example.com"
                     autoComplete="email"
                     required
-                    error={fieldErrors.email}
+                    error={fieldErrors?.email}
                 />
                 <FormField
                     label="Password"
@@ -63,7 +63,7 @@ export function RegisterForm() {
                     type="password"
                     autoComplete="new-password"
                     required
-                    error={fieldErrors.password}
+                    error={fieldErrors?.password}
                 />
                 <FormField
                     label="Confirm password"
@@ -71,7 +71,7 @@ export function RegisterForm() {
                     type="password"
                     autoComplete="new-password"
                     required
-                    error={fieldErrors.confirm_password}
+                    error={fieldErrors?.confirm_password}
                 />
 
                 <SubmitButton className="mt-2">Create account</SubmitButton>

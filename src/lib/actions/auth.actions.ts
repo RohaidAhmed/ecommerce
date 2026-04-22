@@ -56,7 +56,7 @@ export async function loginAction(
 //     redirect('/')
 // }
 
-export async function registerAction(formData: FormData): Promise<ActionResult> {
+export async function registerAction( prevState: ActionResult, formData: FormData): Promise<ActionResult> {
     const raw = {
         full_name: formData.get('full_name'),
         email: formData.get('email'),
