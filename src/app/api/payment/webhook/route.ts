@@ -52,5 +52,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ received: true })
 }
 
-// Required for Stripe signature verification (raw body needed)
-export const config = { api: { bodyParser: false } }
+// // Required for Stripe signature verification (raw body needed)
+// export const config = { api: { bodyParser: false } }
