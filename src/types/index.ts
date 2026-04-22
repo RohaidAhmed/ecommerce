@@ -89,4 +89,4 @@ export type Wishlist = {
 // Action result types
 export type ActionResult<T = void> =
     | { success: true; data?: T }
-    | { success: false; error: string | Record<string, string[]> }
+    | { success: false; error: string | Record<string, string[]> | null }

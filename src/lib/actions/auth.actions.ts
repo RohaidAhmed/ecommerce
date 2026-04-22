@@ -7,26 +7,54 @@ import { createServerClient } from '@/lib/supabase/server'
 import { loginSchema, registerSchema } from '@/lib/validations/auth.schema'
 import type { ActionResult } from '@/types'
 
-export async function loginAction(formData: FormData): Promise<ActionResult> {
+export async function loginAction(
+    prevState: ActionResult,
+    formData: FormData
+): Promise<ActionResult> {
     const raw = {
         email: formData.get('email'),
         password: formData.get('password'),
-    }
+    };
 
-    const parsed = loginSchema.safeParse(raw)
+    const parsed = loginSchema.safeParse(raw);
+
     if (!parsed.success) {
-        return { success: false, error: parsed.error.flatten().fieldErrors }
+        return {
+            success: false,
+            error: parsed.error.flatten().fieldErrors,
+        };
     }
 
-    const supabase = await createServerClient()
-    const { error } = await supabase.auth.signInWithPassword(parsed.data)
+    const supabase = await createServerClient();
+    const { error } = await supabase.auth.signInWithPassword(parsed.data);
 
     if (error) {
-        return { success: false, error: error.message }
+        return { success: false, error: error.message };
     }
 
-    redirect('/')
+    redirect('/');
 }
+
+// export async function loginAction(formData: FormData): Promise<ActionResult> {
+//     const raw = {
+//         email: formData.get('email'),
+//         password: formData.get('password'),
+//     }
+
+//     const parsed = loginSchema.safeParse(raw)
+//     if (!parsed.success) {
+//         return { success: false, error: parsed.error.flatten().fieldErrors }
+//     }
+
+//     const supabase = await createServerClient()
+//     const { error } = await supabase.auth.signInWithPassword(parsed.data)
+
+//     if (error) {
+//         return { success: false, error: error.message }
+//     }
+
+//     redirect('/')
+// }
 
 export async function registerAction(formData: FormData): Promise<ActionResult> {
     const raw = {

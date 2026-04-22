@@ -4,13 +4,19 @@ import Link from 'next/link'
 import { loginAction, signInWithGoogleAction } from '@/lib/actions/auth.actions'
 import { FormField } from '@/components/ui/FormField'
 import { SubmitButton } from '@/components/ui/SubmitButton'
+import { useFormState } from 'react-dom'
 
 type Props = {
     searchParams: Promise<{ error?: string }>
 }
 
 export default async function LoginPage({ searchParams }: Props) {
-    const { error } = await searchParams
+    const { error } = await searchParams;
+
+    const [state, formAction] = useFormState(loginAction, {
+        success: false,
+        error: null,
+    });
 
     return (
         <div className="w-full max-w-sm mx-auto lg:mx-0">
@@ -57,7 +63,7 @@ export default async function LoginPage({ searchParams }: Props) {
             </div>
 
             {/* Login form */}
-            <form action={loginAction} className="flex flex-col gap-5">
+            <form action={formAction} className="flex flex-col gap-5">
                 <FormField
                     label="Email"
                     name="email"
