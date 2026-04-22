@@ -355,7 +355,10 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      decrement_inventory: {
+        Args: { p_product_id: string; p_quantity: number }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
