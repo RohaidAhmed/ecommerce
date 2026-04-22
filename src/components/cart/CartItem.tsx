@@ -15,11 +15,23 @@ export function CartItemRow({ item }: { item: CartItem }) {
     const product = item.product!
     const image = product.images?.[0]
 
-    const update = (qty: number) =>
-        startTransition(() => updateCartItemAction(item.id, qty))
+    // const update = (qty: number) =>
+    //     startTransition(() => updateCartItemAction(item.id, qty))}
 
-    const remove = () =>
-        startTransition(() => removeCartItemAction(item.id))
+    const update = (qty: number) => {
+        startTransition(() => {
+            updateCartItemAction(item.id, qty)
+        })
+    }
+
+    const remove = () => {
+        startTransition(() => {
+            removeCartItemAction(item.id)
+        })
+    }
+    
+    // const remove = () =>
+    //     startTransition(() => removeCartItemAction(item.id))
 
     return (
         <div

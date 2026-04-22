@@ -1,9 +1,7 @@
 // app/(auth)/register/page.tsx
 
 import Link from 'next/link'
-import { registerAction, signInWithGoogleAction } from '@/lib/actions/auth.actions'
-import { FormField } from '@/components/ui/FormField'
-import { SubmitButton } from '@/components/ui/SubmitButton'
+import { signInWithGoogleAction } from '@/lib/actions/auth.actions'
 
 export default function RegisterPage() {
     return (

@@ -10,7 +10,10 @@ import { getPaymentGateway } from '@/lib/payment/gateway'
 import { checkoutSchema } from '@/lib/validations/checkout.schema'
 import type { ActionResult } from '@/types'
 
-export async function createOrderAction(formData: FormData): Promise<ActionResult<{ orderId: string; redirect?: string }>> {
+export async function createOrderAction(
+    prevState: ActionResult<{ orderId: string; redirect?: string }>,
+    formData: FormData
+): Promise<ActionResult<{ orderId: string; redirect?: string }>> {
     const user = await requireUser()
     const supabase = await createServerClient()
 

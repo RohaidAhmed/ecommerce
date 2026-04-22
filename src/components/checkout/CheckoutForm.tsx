@@ -44,7 +44,7 @@ export function CheckoutForm({ userEmail }: { userEmail: string }) {
                     type="email"
                     defaultValue={userEmail}
                     required
-                    error={fieldErrors.email}
+                    error={fieldErrors?.email}
                 />
             </section>
 
@@ -123,7 +123,7 @@ export function CheckoutForm({ userEmail }: { userEmail: string }) {
 
             {/* Submit */}
             <div className="flex flex-col gap-3">
-                <SubmitButton size="lg">
+                <SubmitButton className="">
                     Place Order & Pay
                 </SubmitButton>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-[#737373]">

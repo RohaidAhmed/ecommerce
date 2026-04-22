@@ -4,7 +4,6 @@
 
 import { useState, useTransition } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { FormField } from '@/components/ui/FormField'
 import { SubmitButton } from '@/components/ui/SubmitButton'
 
 type Props = {
