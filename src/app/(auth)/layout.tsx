@@ -26,7 +26,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Logo */}
                 <Link href="/" className="relative z-10 text-xl font-bold tracking-tight">
-                    PALATE
+                    GUPPU BABY
                 </Link>
 
                 {/* Quote */}
@@ -39,7 +39,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
                 {/* Bottom note */}
                 <p className="relative z-10 text-xs text-white/30">
-                    © {new Date().getFullYear()} Palate. All rights reserved.
+                    © {new Date().getFullYear()} Guppu Baby. All rights reserved.
                 </p>
             </div>
 
@@ -47,7 +47,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             <div className="flex flex-col justify-center px-8 py-16 sm:px-16 lg:px-24 bg-[#fafafa]">
                 {/* Mobile logo */}
                 <Link href="/" className="mb-12 text-xl font-bold tracking-tight lg:hidden">
-                    PALATE
+                    GUPPU BABY
                 </Link>
                 {children}
             </div>
