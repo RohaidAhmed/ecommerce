@@ -16,13 +16,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Palate — Modern Apparel',
-    template: '%s | Palate',
+    default: 'Guppu Baby',
+    template: '%s | Guppu Baby',
   },
   description:
     'Curated essentials for modern living. Discover timeless pieces crafted with care.',
   openGraph: {
-    title: 'Palate — Modern Apparel',
+    title: 'Guppu Baby',
     description: 'Curated essentials for modern living.',
     type: 'website',
   },

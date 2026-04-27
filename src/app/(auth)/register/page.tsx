@@ -12,7 +12,7 @@ export default function RegisterPage() {
                     Create account
                 </h1>
                 <p className="text-sm text-[#737373]">
-                    Join Palate and start shopping today.
+                    Join Guppu Baby and start shopping today.
                 </p>
             </div>
 

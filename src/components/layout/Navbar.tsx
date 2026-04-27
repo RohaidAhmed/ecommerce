@@ -43,7 +43,7 @@ export function Navbar({ user, cartCount }: NavbarProps) {
                     href="/"
                     className="text-xl font-bold tracking-tight text-[#0f0f0f] shrink-0"
                 >
-                    PALATE
+                    GUPPU BABY
                 </Link>
 
                 {/* Desktop nav links */}

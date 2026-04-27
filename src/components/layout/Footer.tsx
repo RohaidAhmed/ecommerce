@@ -40,7 +40,7 @@ export function Footer() {
                     {/* Brand column */}
                     <div className="col-span-2 lg:col-span-1">
                         <Link href="/" className="text-xl font-bold tracking-tight">
-                            PALATE
+                            GUPPU BABY
                         </Link>
                         <p className="mt-4 text-sm text-[#737373] leading-relaxed max-w-xs">
                             Curated essentials for modern living. Timeless pieces, crafted with care.
@@ -85,7 +85,7 @@ export function Footer() {
                 {/* Bottom bar */}
                 <div className="mt-16 pt-8 border-t border-[#e5e5e5] flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-xs text-[#737373]">
-                        © {new Date().getFullYear()} Palate. All rights reserved.
+                        © {new Date().getFullYear()} Guppu Baby. All rights reserved.
                     </p>
                     <div className="flex gap-6">
                         {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
