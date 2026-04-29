@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce — Next.js 15 + Supabase + COD
 
-## Getting Started
+Full-stack e-commerce platform. MVC architecture, App Router, TypeScript, Tailwind v4.
 
-First, run the development server:
+## Stack
+- **Framework**: Next.js 15 (App Router, RSC, Server Actions)
+- **Database**: Supabase (PostgreSQL + RLS + Auth)
+- **Styling**: Tailwind CSS v4 (CSS-first config)
+- **State**: Zustand (cart + UI)
+- **Forms**: React Hook Form + Zod
+- **Payment**: Cash on Delivery (Stripe/Easypaisa/JazzCash — ready to add)
+
+## Setup
 
 ```bash
+npm install
+cp .env.local.example .env.local   # fill in Supabase keys
+npx supabase db push               # run migrations (or paste SQL manually)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Supabase setup
+1. Create project at supabase.com
+2. Run `supabase/migrations/001_initial_schema.sql`
+3. Run `supabase/migrations/002_payment_method.sql`
+4. Run `supabase/migrations/003_seed_data.sql` (optional sample data)
+5. Generate types: `npm run supabase:types`
+6. Enable Email Auth in Supabase Dashboard → Auth → Providers
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/           # Pages (App Router)
+│   ├── (auth)/    # Login, Register, OAuth callback
+│   ├── (shop)/    # Storefront, Products, Cart, Checkout
+│   ├── account/   # Orders, Wishlist, Profile
+│   └── admin/     # Dashboard, Products, Orders, Users
+├── components/    # UI components
+├── lib/
+│   ├── actions/   # Server Actions (mutations)
+│   ├── queries/   # DB read functions
+│   ├── supabase/  # Client, server, admin, middleware
+│   └── validations/ # Zod schemas
+├── store/         # Zustand stores
+├── types/         # TypeScript types
+└── hooks/         # Custom React hooks
+```
 
-## Learn More
+## Chunks completed
+- ✅ Chunk 1 — Foundation, config, types, Supabase clients, middleware, layout
+- ✅ Chunk 2 — Product listing, PDP, FilterSidebar, Pagination, Search, CartDrawer
+- ✅ Chunk 3 — Auth (login/register), Cart page, Checkout (COD), Success page
+- ✅ Chunk 4 — Account (orders, wishlist, profile), Admin dashboard
+- ✅ Chunk 5 — Reviews, Wishlist toggle on PDP, ISR caching, error/not-found pages, seed data
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Payment gateways (future)
+The checkout flow is payment-agnostic. To add a gateway:
+1. Add provider SDK
+2. Create a server action in `lib/actions/order.actions.ts`
+3. Add a payment tile in `CheckoutClient.tsx`
+4. Handle webhook in `app/api/stripe/webhook/route.ts` (or new route)
